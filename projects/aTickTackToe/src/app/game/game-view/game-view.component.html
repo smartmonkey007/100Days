@@ -1,0 +1,10 @@
+<div>Player: </div>
+
+<div>
+    Play area
+</div>
+<ttt-scoreboard></ttt-scoreboard>
+
+<ttt-board>
+    <ttt-square *ngFor="let square of board" [value]="square"></ttt-square>
+</ttt-board>

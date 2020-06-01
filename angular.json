@@ -2,5 +2,133 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "aTickTackToe": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/aTickTackToe",
+      "sourceRoot": "projects/aTickTackToe/src",
+      "prefix": "ttt",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/aTickTackToe",
+            "index": "projects/aTickTackToe/src/index.html",
+            "main": "projects/aTickTackToe/src/main.ts",
+            "polyfills": "projects/aTickTackToe/src/polyfills.ts",
+            "tsConfig": "projects/aTickTackToe/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/aTickTackToe/src/favicon.ico",
+              "projects/aTickTackToe/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "projects/aTickTackToe/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/aTickTackToe/src/environments/environment.ts",
+                  "with": "projects/aTickTackToe/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "aTickTackToe:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "aTickTackToe:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "aTickTackToe:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/aTickTackToe/src/test.ts",
+            "polyfills": "projects/aTickTackToe/src/polyfills.ts",
+            "tsConfig": "projects/aTickTackToe/tsconfig.spec.json",
+            "karmaConfig": "projects/aTickTackToe/karma.conf.js",
+            "assets": [
+              "projects/aTickTackToe/src/favicon.ico",
+              "projects/aTickTackToe/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "projects/aTickTackToe/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/aTickTackToe/tsconfig.app.json",
+              "projects/aTickTackToe/tsconfig.spec.json",
+              "projects/aTickTackToe/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/aTickTackToe/e2e/protractor.conf.js",
+            "devServerTarget": "aTickTackToe:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "aTickTackToe:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "a5ec7169-4331-48ee-9559-32b8fd7cc869"
+  },
+  "defaultProject": "aTickTackToe"
 }

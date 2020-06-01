@@ -6,6 +6,7 @@ This repo will keep track of my hundred days of code. I should have at least one
 * Tick tack toe game
     - in Angular
     - in React
+    - in Vue
     - in svelt
     - in Ionic
 * CSS styles challenges
