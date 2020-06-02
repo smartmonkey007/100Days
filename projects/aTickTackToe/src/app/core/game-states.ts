@@ -3,3 +3,9 @@ export enum GameStates {
     'INPROGRESS',
     'END'
 }
+
+export interface GameResult {
+    gameState: GameStates;
+    winner: number;
+    isCats: boolean;
+}

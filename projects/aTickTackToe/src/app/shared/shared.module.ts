@@ -4,11 +4,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { PlayerTextPipe } from './player-text.pipe';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [PlayerTextPipe],
   providers: [{
     provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
     useValue: { appearance: 'fill' }
@@ -27,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    PlayerTextPipe,
 
   ]
 })

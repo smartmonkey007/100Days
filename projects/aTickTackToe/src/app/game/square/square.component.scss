@@ -1,7 +1,14 @@
 @import '../../../variables';
 
 .node {
-    height: 100;
-    width: 100;
-    background-color: red;
+    height: 100px;
+    width: 100px;
+    background-color: rgb(126, 158, 194);
+    margin: 10px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 35px;
+    font-size: xx-large;
+    box-sizing: border-box;
 }

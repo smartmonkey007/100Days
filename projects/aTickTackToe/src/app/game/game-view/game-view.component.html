@@ -1,10 +1,7 @@
-<div>Player: </div>
+<ttt-new-game [state]="gameState" (newGame)="onNewGame()" [winner]="player | playerText"></ttt-new-game>
 
-<div>
-    Play area
-</div>
-<ttt-scoreboard></ttt-scoreboard>
+<ttt-scoreboard [class.inActive]="gameState !== 1" [player]="player"></ttt-scoreboard>
 
-<ttt-board>
-    <ttt-square *ngFor="let square of board" [value]="square"></ttt-square>
+<ttt-board [class.inActive]="gameState !== 1" [board]="board" (play)="onPlay($event)">
+
 </ttt-board>

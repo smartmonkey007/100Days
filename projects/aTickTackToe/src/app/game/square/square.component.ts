@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ttt-square',
@@ -7,11 +7,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SquareComponent implements OnInit {
 
-  @Input() value = '';
-
+  @Input() value: number = 0;
+  @Output() selected = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSelected(value) {
+    this.selected.emit(value);
   }
 
 }

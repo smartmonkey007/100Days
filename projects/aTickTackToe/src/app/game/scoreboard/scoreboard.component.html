@@ -1,1 +1,7 @@
-<p>scoreboard works!</p>
+<h2>Player: {{player | playerText}}</h2>
+
+<ng-container *ngIf="history.length > 0">
+    <ng-container *ngFor="let hist of history">
+        <span>Player {{hist.player}}</span> <span>won {{hist.wins}} times</span>
+    </ng-container>
+</ng-container>

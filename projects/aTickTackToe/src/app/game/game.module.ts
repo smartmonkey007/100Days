@@ -6,6 +6,7 @@ import { GameViewComponent } from './game-view/game-view.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
+import { NewGameComponent } from './new-game/new-game.component';
 
 export const routes: Routes = [
   {
@@ -16,7 +17,7 @@ export const routes: Routes = [
 
 
 @NgModule({
-  declarations: [BoardComponent, SquareComponent, GameViewComponent, ScoreboardComponent],
+  declarations: [BoardComponent, SquareComponent, GameViewComponent, ScoreboardComponent, NewGameComponent],
   imports: [
     CommonModule,
 

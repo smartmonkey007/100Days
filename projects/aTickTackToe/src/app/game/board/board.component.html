@@ -1,5 +1,8 @@
-<p>board works!</p>
+<div class="board">
+    <ttt-square *ngFor="let square of board; let ind = index" [value]="square" (selected)="onSelected($event, ind)">
+    </ttt-square>
 
-<ng-content>
+    <ng-content>
+    </ng-content>
 
-</ng-content>
+</div>

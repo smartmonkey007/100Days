@@ -32,4 +32,15 @@ export class GameViewComponent implements OnInit, OnDestroy {
     this.subs$.forEach(sub => sub.unsubscribe());
   }
 
+  onPlay($event) {
+    console.log($event);
+    if (this.gameState === GameStates.INPROGRESS) {
+      this.gameLogic.playSquare($event);
+    }
+  }
+
+  onNewGame() {
+    this.gameLogic.newGame();
+  }
+
 }

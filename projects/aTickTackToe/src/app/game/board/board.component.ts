@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ttt-board',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
+  @Input() board = [];
+  @Output() play = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSelected(currentValue, index) {
+    this.play.emit(index);
   }
 
 }
