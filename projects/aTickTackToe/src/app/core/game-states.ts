@@ -4,8 +4,13 @@ export enum GameStates {
     'END'
 }
 
-export interface GameResult {
-    gameState: GameStates;
-    winner: number;
-    isCats: boolean;
+export class GameResult {
+    gameState = GameStates.NEW;
+    isWin = false;
+    isCats = false;
+    board = [];
+
+    constructor(public player: number = 0, boardSize = 9) {
+        this.board = Array(boardSize).fill(0);
+    }
 }

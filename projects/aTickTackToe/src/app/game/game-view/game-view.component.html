@@ -1,7 +1,7 @@
-<ttt-new-game [state]="gameState" (newGame)="onNewGame()" [winner]="player | playerText"></ttt-new-game>
+<ttt-new-game [turn]="turn" (newGame)="onNewGame()"></ttt-new-game>
 
-<ttt-scoreboard [class.inActive]="gameState !== 1" [player]="player"></ttt-scoreboard>
+<ttt-scoreboard [class.inActive]="turn.gameState !== 1" [player]="turn.player"></ttt-scoreboard>
 
-<ttt-board [class.inActive]="gameState !== 1" [board]="board" (play)="onPlay($event)">
+<ttt-board [class.inActive]="turn.gameState !== 1" [board]="turn.board" (play)="onPlay($event)">
 
 </ttt-board>

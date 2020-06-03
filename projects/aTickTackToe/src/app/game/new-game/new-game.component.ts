@@ -10,8 +10,8 @@ export class NewGameComponent implements OnInit {
 
   @Output() newGame = new EventEmitter<void>();
 
-  @Input() state: GameStates = GameStates.NEW;
-  @Input() winner: string = '';
+  @Input() turn;
+
   constructor() { }
 
   ngOnInit(): void {
