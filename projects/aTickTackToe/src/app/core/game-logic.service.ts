@@ -6,8 +6,7 @@ import { GameStates, GameResult } from './game-states';
 })
 export class GameLogicService {
 
-  private currentState = new GameResult();
-  private playerNames = ['', 'X', 'O'];
+  private currentState = new GameResult(2, 9);
   private winPatterns = [
     'www[w,0-9][w,0-9][w,0-9][w,0-9][w,0-9][w,0-9]', 'w[w,0-9][w,0-9]w[w,0-9][w,0-9]w[w,0-9][w,0-9]',
     'w[w,0-9][w,0-9][w,0-9]w[w,0-9][w,0-9][w,0-9]w', '[w,0-9][w,0-9]w[w,0-9]w[w,0-9]w[w,0-9][w,0-9]',
@@ -15,16 +14,12 @@ export class GameLogicService {
     '[w,0-9]w[w,0-9][w,0-9]w[w,0-9][w,0-9]w[w,0-9]', '[w,0-9][w,0-9]w[w,0-9][w,0-9]w[w,0-9][w,0-9]w'
   ];
 
-
-  private players = 2;
-
   turn = new BehaviorSubject<GameResult>(this.currentState);
-
 
   constructor() { }
 
   newGame() {
-    this.currentState = new GameResult(Math.floor(Math.random() * 2) + 1, 9);
+    this.currentState = new GameResult(2, 9);
     this.currentState.gameState = GameStates.INPROGRESS;
     this.turn.next(this.currentState);
   }
@@ -36,7 +31,7 @@ export class GameLogicService {
   playSquare(square: number) {
     const player = this.currentState.player;
     const board = this.currentState.board;
-    if (square <= board.length && player <= this.players && board[square] === 0) {
+    if (square <= board.length && player <= this.currentState.maxPlayers && board[square] === 0) {
       board[square] = player;
       const result = this.evaluateGame({ board, player });
       if (result > 0) {
@@ -47,12 +42,12 @@ export class GameLogicService {
         this.currentState.player = 0;
         this.currentState.isCats = true;
       } else {
-        this.currentState.player = this.nextPlayer(this.currentState, this.players);
+        this.currentState.player = this.nextPlayer(this.currentState, this.currentState.maxPlayers);
       }
 
       this.nextTurn();
     } else {
-      console.error('invalid move', square <= board.length && player <= this.players && board[square] === 0);
+      console.error('invalid move', square <= board.length && player <= this.currentState.maxPlayers && board[square] === 0);
     }
   }
 
@@ -78,7 +73,7 @@ export class GameLogicService {
   }
 
   getPlayerText(player: number) {
-    return this.playerNames[player || `0`] || '';
+    return this.currentState.playerNames[player || `0`] || '';
   }
 
 

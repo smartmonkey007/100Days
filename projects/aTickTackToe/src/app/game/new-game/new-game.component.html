@@ -1,14 +1,13 @@
 <ng-container [ngSwitch]="turn.gameState">
-
     <div class="cover" *ngSwitchCase="0">
         <button mat-raised-button color="primary" (click)="onNewGame()">New Game</button>
     </div>
     <ng-container *ngSwitchCase="1"></ng-container>
     <div class="cover" *ngSwitchCase="2">
-        <h1 *ngIf="turn.isCats === true; else congratsPlayer">Congrats {{turn.player | playerText}}! you have Won the
-            game!</h1>
+        <h1 *ngIf="turn.isCats === true; else congratsPlayer">
+            🌪🔥🌊⚡🌪! Nice scrap, keep fighting to see who ends up on top!</h1>
         <ng-template #congratsPlayer>
-            <h1>Congrats {{turn.winner}}! you have Won the game!</h1>
+            <h1>Congrats {{turn.player | playerText}}! you have Won the game!</h1>
         </ng-template>
         <button mat-raised-button color="primary" (click)="onNewGame()">New Game</button>
     </div>
