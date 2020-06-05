@@ -4,12 +4,10 @@ import { GameLogicService } from '../core/game-logic.service';
 import { GameLogic } from '../core/GameLogic';
 
 export const newGame = createAction(
-    'New Game'
+    'New Game',
 );
 
 export const play = createAction(
     'Play a square on your turn',
-    props<{ square: number }>(),
-    // (state: GameResult, square: number): GameResult => {
-    //     return GameLogic.playSquare(state, square);
+    props<{ square: number }>()
 );

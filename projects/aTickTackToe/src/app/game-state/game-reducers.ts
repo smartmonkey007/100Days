@@ -15,10 +15,11 @@ export const initialState: GameResult = {
 
 const gameReducer = createReducer(
     initialState,
-    on(gameActions.newGame, (state) => new GameResult(2, 9)),
-    on(gameActions.play, (state, { square }) => ({ ...state, ...GameLogic.playSquare({ ...state }, square) })),
+    on(gameActions.newGame, (state) => ({ ...new GameResult(2, 9), gameState: GameStates.INPROGRESS })),
+    on(gameActions.play, (state, square) => ({ ...state, ...GameLogic.playSquare({ ...state }, square.square) })),
+//  on(ScoreboardPageAc, (state, { game   }) => ({                        home: game.home, away: game.away }))
 );
 
-export function reducer(state: GameResult | undefined, action: Action) {
+export function gameStateReducer(state: GameResult | undefined, action: Action) {
     return gameReducer(state, action);
 }

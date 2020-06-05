@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GameLogicService } from '../../core/game-logic.service';
 import { Subscription } from 'rxjs';
 import { GameStates, GameResult } from '../../core/game-states';
+import { Store } from '@ngrx/store';
+import { newGame, play } from '../../game-state/game-actions';
 
 @Component({
   selector: 'ttt-game-view',
@@ -14,12 +16,10 @@ export class GameViewComponent implements OnInit, OnDestroy {
 
   subs$: Subscription[] = [];
 
-  constructor(private gameLogic: GameLogicService) { }
+  constructor(private gameLogic: GameLogicService, private store: Store<{ gameState: GameResult }>) { }
 
   ngOnInit(): void {
-    const gameLogic = this.gameLogic.turn.subscribe(turn => {
-      this.turn = turn;
-    });
+    const gameLogic = this.store.select('gameState').subscribe(gs => this.turn = gs);
     this.subs$.push(gameLogic);
   }
 
@@ -30,12 +30,12 @@ export class GameViewComponent implements OnInit, OnDestroy {
   onPlay($event) {
     console.log($event);
     if (this.turn.gameState === GameStates.INPROGRESS) {
-      this.gameLogic.playSquare($event);
+      this.store.dispatch(play({ square: $event }));
     }
   }
 
   onNewGame() {
-    this.gameLogic.newGame();
+    this.store.dispatch(newGame());
   }
 
 }

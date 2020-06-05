@@ -17,7 +17,6 @@ export class GameLogic {
             gameState: gameState.gameState,
             isCats: gameState.isCats,
             isWin: gameState.isWin,
-            // playerNames: gameState.isWin
         };
 
         if (square <= state.board.length && state.player <= state.maxPlayers && state.board[square] === 0) {
@@ -31,7 +30,7 @@ export class GameLogic {
                 state.player = 0;
                 state.isCats = true;
             } else {
-                state.player = state.player === state.maxPlayers ? 1 : state.player++;
+                state.player = state.player === state.maxPlayers ? 1 : ++state.player;
             }
         } else {
             console.error('invalid move', square <= state.board.length && state.player <= state.maxPlayers && state.board[square] === 0);
