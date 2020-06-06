@@ -1,0 +1,28 @@
+@import "variables";
+
+.square {
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.token {
+
+}
+
+.token-0 {
+    background-color: $secondary;
+}
+
+.token-1 {
+    background-color: $mouse;
+}
+
+.token-2 {
+    background-color: $dragon;
+}
