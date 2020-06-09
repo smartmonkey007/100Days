@@ -1,19 +1,32 @@
-import React from 'react';
-import Board from './game/board'
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import Board from './game/board';
+import GameScreen from './game/gameScreen';
+import { GameResult, GameLogic } from './gameLogic';
 import './MiceAndDragons.scss';
-import { GameResult } from './gameLogic';
 
-const gameState = new GameResult(2, 9);
+const initialGameState = new GameResult(2, 9);
 
-// doPickSquare(square) { }
 
-function MiceAndDragons() {
+export default function MiceAndDragons() {
+  const [gameState, takeTurn] = useState(initialGameState);
+
+  useEffect(() => {
+    console.log(gameState);
+  });
+
+  const doPickSquare = (square: any, value: any) => {
+    console.log('mice', square, value);
+    if (value === 0) {
+      takeTurn({ ...gameState, ...GameLogic.playSquare(gameState, square) });
+
+    }
+  };
+
   return (
     <div className="App">
-      <Board squares={gameState.board}></Board>
+      <GameScreen gameResult={gameState}></GameScreen>
+      <Board inProgress={gameState.gameState === 'inprogress'} squares={gameState.board} onClick={(square: any, value: any) => doPickSquare(square, value)}></Board>
     </div>
   );
 }
 
-export default MiceAndDragons;
