@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import MiceAndDragons from './MiceAndDragons';
+import MiceAndDragons from './game';
 
 
 test('renders learn react link', () => {

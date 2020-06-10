@@ -1,23 +1,32 @@
 
 export class GameResult {
     player = 0;
-    gameState = 'new';
+    gameState: GameStates = 'new';
     isWin = false;
     isCats = false;
     board: number[] = [];
-    playerNames = ['', '🐉', '🐭'];
+    playerNames = ['', '🐰', '🐭'];
+    message = 'of Mice and Bunnies';
 
     constructor(public maxPlayers = 2, boardSize = 9) {
         this.player = Math.floor(Math.random() * maxPlayers) + 1;
         this.board = Array(boardSize).fill(0);
-        this.playerNames = ['', '🐉', '🐭'];
     }
 }
+
+const catsMessages = ['The fur is flying! ⚔🐰🌪🐭🌪⚔'];
+const bunnyMessages = ['Bunnies build a better mousetrap! 🐰⚔'];
+const miceMessages = ['RemY is serving Bunny Stew for dinner! 🐭⚔'];
+
 
 export type GameStates = 'new' | 'inProgress' | 'end';
 
 export const gameTextConversion = (token: number) => {
-    return ['', '🐉', '🐭'][token];
+    return ['', '🐰', '🐭'][token];
+}
+
+export const newGame = (gameState: GameResult) => {
+    return { ...gameState, ... { board: gameState.board.fill(0), isCats: false, isWin: false, message: '', gameState: 'inProgress' } };
 }
 
 export class GameLogic {
@@ -37,6 +46,7 @@ export class GameLogic {
             gameState: gameState.gameState as GameStates,
             isCats: gameState.isCats,
             isWin: gameState.isWin,
+            message: '',
         };
 
         if (square <= state.board.length && state.player <= state.maxPlayers && state.board[square] === 0) {
@@ -45,10 +55,17 @@ export class GameLogic {
             if (result > 0) {
                 state.gameState = 'end';
                 state.isWin = true;
+                if (state.player === 1) {
+                    state.message = bunnyMessages[0];
+                } else if (state.player === 2) {
+                    state.message = miceMessages[0];
+                }
+
             } else if (result === -1) {
                 state.gameState = 'end';
                 state.player = 0;
                 state.isCats = true;
+                state.message = catsMessages[0];
             } else {
                 state.player = state.player === state.maxPlayers ? 1 : ++state.player;
             }

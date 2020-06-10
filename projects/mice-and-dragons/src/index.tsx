@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppBar from './appShell/AppBar';
 import './index.scss';
-import MiceAndDragons from './MiceAndDragons';
+import MiceAndDragons from './game';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
