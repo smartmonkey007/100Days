@@ -1,7 +1,14 @@
 <script>
+  import Square from "./Square.svelte";
+  export let board = [];
 </script>
 
-<styles>
-</styles>
+<styles />
 
-<h1>Hello world</h1>
+<h1>Hello world board</h1>
+
+{#each board as square}
+  <Square />
+{:else}
+  <h1>Game Tilt</h1>
+{/each}

@@ -1,5 +1,14 @@
 <script>
-	let name = 'world';
+  import AppBar from "./app/appBar.svelte";
+  import Board from "./game/board.svelte";
+  import Dashboard from "./game/Dashboard.svelte";
+
+  let name = `Unicorns and Dragons`;
 </script>
 
-<h1>Hello {name}!</h1>
+<AppBar title={name} />
+
+<Dashboard />
+<Board board={[0, 0, 0]} />
+
+<h1>hello {name}!</h1>
