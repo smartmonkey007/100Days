@@ -1,23 +1,17 @@
 {
-  "name": "svelte-app",
+  "name": "unicorns-and-dragons",
   "version": "1.0.0",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public"
+    "build": "webpack",
+    "dev": "webpack-dev-server --debug --content-base public --port 5000 --hmr -w",
+    "start": "webpack-dev-server --content-base public --port 5000 --hmr -w"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^12.0.0",
-    "@rollup/plugin-node-resolve": "^8.0.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.1.0",
     "babel-preset-es2015": "^6.24.1",
     "css-loader": "^3.5.3",
     "mini-css-extract-plugin": "^0.9.0",
-    "rollup": "^2.3.4",
-    "rollup-plugin-livereload": "^1.0.0",
-    "rollup-plugin-svelte": "^5.0.3",
-    "rollup-plugin-terser": "^5.1.2",
     "style-loader": "^1.2.1",
     "svelte": "^3.0.0",
     "svelte-loader": "^2.13.6",
@@ -25,7 +19,5 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
   },
-  "dependencies": {
-    "sirv-cli": "^0.4.4"
-  }
+  "dependencies": {}
 }
