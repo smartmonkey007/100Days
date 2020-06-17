@@ -1,11 +1,22 @@
-import { writable } from 'svelte/store';
+const winPatterns = [
+    'www......', 'w..w..w..',
+    'w...w...w', '..w.w.w..',
+    '...www...', '......www',
+    '.w..w..w.', '..w..w..w'
+];
 
-export function GameLogic() {
+// returns player if win, -1 if cats, or 0 if no winner;
+export function evaluateGame(gameBoard, player) {
+    const boardString = gameBoard.join('').replace(new RegExp(`${ player }`, 'g'), 'w');
 
-    export let players = writable(2);
-    export let avatars = writeable(['', '🦄', '🐲']);
+    if (winPatterns
+        .some(win => boardString.match(win))) {
+        return player;
+    }
 
-    export let board = writeable(Array(9).fill(0));
+    if (gameBoard.filter(b => b === 0).length === 0) {
+        return -1;
+    }
 
-
+    return 0;
 }
