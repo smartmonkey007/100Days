@@ -4,10 +4,10 @@ This repo will keep track of my hundred days of code. I should have at least one
 
 ## Potential Projects
 * Tick tack toe game
-    - in Angular
-    - in React
-    - in Vue
-    - in svelt
+    - in Angular - done
+    - in React   - done
+    - in Vue     - started
+    - in svelt   - done
     - in Ionic
 * CSS styles challenges
 * Firebase functions for games
