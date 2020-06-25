@@ -17,5 +17,12 @@
         "titleBar.inactiveBackground": "#21573299",
         "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.color": "#215732"
+    "peacock.color": "#215732",
+    "eslint.workingDirectories": [
+
+    ],
+    "eslint.lintTask.options": ". -c .\\projects\\rock-n-roll\\eslintrc.js",
+    "javascript.format.enable": false,
+    "vetur.format.defaultFormatter.js": "none",
+    "vetur.format.defaultFormatter.ts": "none"
 }
