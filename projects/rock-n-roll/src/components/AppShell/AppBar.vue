@@ -2,7 +2,7 @@
   <div class="app-bar">
     <span class="app-name">{{brandName}}</span>
     <div class="menu-links">
-      <div v-for="menuItem in menuItems" :key="menuItem">
+      <div v-for="menuItem in menuItems" :key="menuItem.link">
         <router-link class="menu-link" v-bind:to="menuItem.link">{{menuItem.caption}}</router-link>
       </div>
     </div>
@@ -39,14 +39,15 @@ export default class AppBar extends Vue {
 }
 
 .menu-link {
+  border-radius: 5px;
   background-color: pink;
   padding: 10px;
-  margin: 10px 30px;
+  margin: 10px 10px;
   text-decoration: none;
   font-size: larger;
-  font-weight: bolder;
 
   &.router-link-exact-active {
+    font-weight: bolder;
     color: teal;
   }
 }
