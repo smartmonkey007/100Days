@@ -15,8 +15,8 @@ import AppBar from '@/components/AppShell/AppBar.vue';
 export default Vue.extend({
   components: {
     AppBar,
-  }
-});
+  },
+},);
 </script>
 
 <style lang="scss">

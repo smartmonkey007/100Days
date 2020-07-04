@@ -1,20 +1,20 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
   },
   extends: [
     'plugin:vue/essential',
     '@vue/standard',
-    '@vue/typescript/recommended'
+    '@vue/typescript/recommended',
   ],
   parserOptions: {
-    ecmaVersion: 2020
+    ecmaVersion: 2020,
   },
   rules: {
-    'comma-dangle': ['warn', 'always'],
-    quotes: ['error', 'single'],
-    semi: [ 2, "always", { "omitLastInOneLineBlock": true} ],
+    'comma-dangle': ['warn', 'always', ],
+    quotes: ['error', 'single', ],
+    semi: [2, 'always', { omitLastInOneLineBlock: true, },],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 
@@ -23,11 +23,11 @@ module.exports = {
     {
       files: [
         '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/**/*.spec.{j,t}s?(x)'
+        '**/tests/unit/**/*.spec.{j,t}s?(x)',
       ],
       env: {
-        jest: true
-      }
-    }
-  ]
-}
+        jest: true,
+      },
+    },
+  ],
+};
