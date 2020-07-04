@@ -1,18 +1,17 @@
 <template>
   <div class="home">
-    <Board />
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <game></game>
   </div>
 </template>
 
 <script lang="ts">
 
-import Board from '@/components/Board.vue';
+import Game from '@/components/Game.vue';
 
 export default {
   name: 'Home',
   components: {
-    Board,
+    Game,
   },
 };
 </script>

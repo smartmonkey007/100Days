@@ -1,8 +1,8 @@
 <template>
   <div class="app-bar">
-    <span class="app-name">{{brandName}}</span>
+    <span class="app-name">{{brandName || ''}}</span>
     <div class="menu-links">
-      <div v-for="menuItem in menuItems" :key="menuItem">
+      <div v-for="menuItem in menuItems" :key="menuItem.link">
         <router-link class="menu-link" v-bind:to="menuItem.link">{{menuItem.caption}}</router-link>
       </div>
     </div>
@@ -20,7 +20,7 @@ export class MenuItem {
 
 @Component
 export default class AppBar extends Vue {
-  @Prop() brandName: string;
+  @Prop() brandName?: string;
   @Prop() menuItems?: MenuItem[];
 }
 
