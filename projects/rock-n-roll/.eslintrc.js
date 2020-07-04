@@ -12,11 +12,18 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
-    'comma-dangle': ['warn', 'always', ],
-    quotes: ['error', 'single', ],
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "ignore",
+      "imports": "ignore",
+      "exports": "ignore",
+      "functions": "ignore"
+  }],
+  quotes: ['error', 'single', ],
     semi: [2, 'always', { omitLastInOneLineBlock: true, },],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'space-before': false
 
   },
   overrides: [
