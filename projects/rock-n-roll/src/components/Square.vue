@@ -1,5 +1,7 @@
 <template>
-  <div v-on:click="() => selectSquare()" class="square">{{value}}</div>
+  <div class="square">
+    <span v-on:click="() => selectSquare()">{{value}}</span>
+  </div>
 </template>
 
 <script lang="ts">
@@ -17,9 +19,12 @@ export default class Square extends Vue {
 
 <style lang="scss">
 .square {
+  display: flex;
   min-width: 100px;
   min-height: 100px;
   border: 1px solid blue;
   background-color: purple;
+  justify-content: center;
+  align-items: center;
 }
 </style>
