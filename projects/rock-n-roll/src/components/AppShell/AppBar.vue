@@ -39,14 +39,15 @@ export default class AppBar extends Vue {
 }
 
 .menu-link {
+  border-radius: 5px;
   background-color: pink;
   padding: 10px;
-  margin: 10px 30px;
+  margin: 10px 10px;
   text-decoration: none;
   font-size: larger;
-  font-weight: bolder;
 
   &.router-link-exact-active {
+    font-weight: bolder;
     color: teal;
   }
 }
