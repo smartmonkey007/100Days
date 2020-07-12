@@ -1,18 +1,23 @@
 <template>
-  <div class="square">
-    <span v-on:click="() => selectSquare()">{{value}}</span>
+  <div class="square" v-on:click="() => selectSquare()">
+    <span class="player-square">{{getSquareAvatar(value)}}</span>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Emit, Vue, } from 'vue-property-decorator';
+import { Component, Prop, Vue, } from 'vue-property-decorator';
+import { getAvatar } from '../gameLogic';
 
 @Component
 export default class Square extends Vue {
   @Prop() value?: string;
 
-  selectSquare () {
-    Emit('select-square');
+  selectSquare() {
+    this.$emit('select');
+  }
+
+  getSquareAvatar(player: number) {
+    return getAvatar(player);
   }
 }
 </script>
@@ -26,5 +31,9 @@ export default class Square extends Vue {
   background-color: purple;
   justify-content: center;
   align-items: center;
+}
+
+.player-square {
+  font-size: 4vw;
 }
 </style>
