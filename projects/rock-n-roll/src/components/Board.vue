@@ -31,7 +31,7 @@ export default class Board extends Vue {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  // flex-basis: 33%;
+  user-select: none;
 }
 
 .board-square {

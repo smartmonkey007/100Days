@@ -1,5 +1,10 @@
 <template>
-  <div>
+  <div class="game">
+    <overlay
+      v-bind:show="gameState.player === 0"
+      v-bind:message="gameState.message"
+      v-on:new-game="() => startNewGame()"
+    ></overlay>
     <jumbotron v-bind:message="gameState.message"></jumbotron>
     <Board v-on:select="(square)=>selectSquare(square)" :squares="gameState.board"></Board>
   </div>
@@ -10,6 +15,7 @@
 import { Vue, Component } from 'vue-property-decorator';
 import jumbotron from './jumbotron.vue';
 import Board from './Board.vue';
+import Overlay from './Overlay.vue';
 import { GameState, takeTurn, newGame, startGame } from '../gameLogic';
 
 @Component({
@@ -17,6 +23,7 @@ import { GameState, takeTurn, newGame, startGame } from '../gameLogic';
   components: {
     Board,
     jumbotron,
+    Overlay,
   }
 })
 export default class Game extends Vue {
@@ -26,15 +33,20 @@ export default class Game extends Vue {
     super();
 
     this.gameState = newGame;
+  }
 
-    setTimeout(() => {
-      this.setGameState(this.gameState, startGame);
-    }, 2000);
+  startNewGame() {
+    this.setGameState(this.gameState, startGame);
   }
 
   selectSquare(square: number) {
     const newTurn = takeTurn(this.gameState, square);
     this.setGameState(this.gameState, newTurn);
+    if (this.gameState.result?.isWinner || this.gameState.result?.isCats) {
+      setTimeout(() => {
+        this.gameState.player = 0;
+      }, 1000);
+    }
   }
 
   setGameState(current: GameState, newState: GameState) {
@@ -49,4 +61,7 @@ export default class Game extends Vue {
 </script>
 
 <style lang="scss">
+.game {
+  user-select: none;
+}
 </style>
