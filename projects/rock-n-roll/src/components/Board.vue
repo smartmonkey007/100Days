@@ -1,7 +1,7 @@
 <template>
   <div class="board-container">
     <div class="board-square" v-for="(square, index) in squares" :key="index">
-      <Square :value="square"></Square>
+      <Square :value="square" v-on:select="()=>selectSquare(index)"></Square>
     </div>
   </div>
 </template>
@@ -18,6 +18,10 @@ import Square from './Square.vue';
 })
 export default class Board extends Vue {
   @Prop() private squares!: [];
+
+  selectSquare(square: number) {
+    this.$emit('select', square);
+  }
 }
 </script>
 
@@ -27,11 +31,10 @@ export default class Board extends Vue {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  // flex-basis: 33%;
+  user-select: none;
 }
 
 .board-square {
-
   flex: 1 0 30%;
 }
 </style>

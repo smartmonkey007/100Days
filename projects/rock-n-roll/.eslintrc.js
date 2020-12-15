@@ -19,11 +19,12 @@ module.exports = {
       "exports": "ignore",
       "functions": "ignore"
   }],
-  quotes: ['error', 'single', ],
+    quotes: ['error', 'single', ],
     semi: [2, 'always', { omitLastInOneLineBlock: true, },],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'space-before': false
+    'space-before': "off",
+    'space-before-function-paren': 'never',
 
   },
   overrides: [

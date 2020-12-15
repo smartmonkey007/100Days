@@ -1,4 +1,4 @@
-import { evaluateGame } from '@/gameLogic';
+import { evaluateGame, GameState } from '@/gameLogic';
 
 describe('game Logic', () => {
     it.each([
@@ -14,10 +14,10 @@ describe('game Logic', () => {
     ])('evaluate should return {isWinner: false, isCats: false, gameBoard: [...]}', (board) => {
         const game = board.split('').map(square => Number.parseInt(square));
         const playSquare = board.indexOf('1');
-        const evalGame = evaluateGame(game, 1, playSquare);
+        game[0] = 1;
+        const evalGame = evaluateGame(game, 1);
         expect(evalGame.isCats).toBeFalsy();
         expect(evalGame.isWinner).toBeFalsy();
-        expect(evalGame.gameBoard[playSquare]).toBe(1);
     });
 
     it.each([
@@ -32,19 +32,19 @@ describe('game Logic', () => {
     ])('evaluate should return {isWinner: true, isCats: false, gameBoard: [...]}', (board) => {
         const game = board.split('').map(square => Number.parseInt(square));
         const playSquare = board.indexOf('9');
-        const evalGame = evaluateGame(game, 1, playSquare);
+        game[playSquare] = 1;
+        const evalGame = evaluateGame(game, 1);
         expect(evalGame.isCats).toBeFalsy();
         expect(evalGame.isWinner).toBeTruthy();
-        expect(evalGame.gameBoard[playSquare]).toBe(1);
     });
 
 
     it('evaluate should return {isWinner: false, isCats: true, gameBoard: [...]}', () => {
         const game = [0, 2, 3, 4, 5, 6, 7, 8, 9];
-        const evalGame = evaluateGame(game, 1, 0);
+        game[0] = 1;
+        const evalGame = evaluateGame(game, 1);
         expect(evalGame.isCats).toBeTruthy();
         expect(evalGame.isWinner).toBeFalsy();
-        expect(evalGame.gameBoard[0]).toBe(1);
     });
 
 
