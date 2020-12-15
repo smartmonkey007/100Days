@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "adventTest",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "node",
+            "runtimeArgs": [
+                "--nolazy",
+                "-r",
+                "ts-node/register/transpile-only"
+            ],
+            "args": [
+                "day11.ts"
+            ],
+            "sourceMaps": true,
+            "cwd": "${workspaceRoot}/projects/adventOfCode/",
+            "internalConsoleOptions": "openOnSessionStart",
+            "timeout": 1000000,
+            "skipFiles": [
+                "<node_internals>/**",
+                "node_modules/**"
+            ]
+        }
+    ]
+}
