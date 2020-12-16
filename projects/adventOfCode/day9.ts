@@ -1,7 +1,7 @@
 import * as data from './data/day9';
 
 function processData(data: number[], depth: number) {
-    let violation = null;
+    let violation = -1;
     for (let index = depth; index < data.length; index++) {
         let eData = data.slice(index - depth, index);
         if (!checkCipher(eData.pop() || 0, eData, data[index])) {

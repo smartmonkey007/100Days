@@ -12,7 +12,7 @@
                 "ts-node/register/transpile-only"
             ],
             "args": [
-                "day11.ts"
+                "day12.ts"
             ],
             "sourceMaps": true,
             "cwd": "${workspaceRoot}/projects/adventOfCode/",
